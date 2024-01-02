@@ -64,7 +64,6 @@ export class NotificationService {
 
           // schools are still being populated without a store dispatch ?
           // no, that is the loadSchools result 
-
           // ngrxOnStoreInit is used in the school store to add schools
 
           console.log('school');

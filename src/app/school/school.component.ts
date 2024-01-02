@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { AsyncPipe, NgFor } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { provideComponentStore } from '@ngrx/component-store';
-import { SchoolStore } from './school.store';
+//import { provideComponentStore } from '@ngrx/component-store';
+//import { SchoolStore } from './school.store';
 import { Store } from '@ngrx/store';
 import { SchoolSelectors } from './store/school.selectors';
 
