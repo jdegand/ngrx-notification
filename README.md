@@ -53,7 +53,6 @@ load your effect only when necessary. the application contain a root route, a la
 - [Medium](https://medium.com/@thomas.laforge/ngrx-effect-use-to-cache-get-request-d32e9063ba1e) - ngrx effect use to cache get request
 - [Blog](https://brianflove.com/2018-03-16/ngrx-mat-snackbar/) - ngrx mat snackbar
 - [YouTube](https://www.youtube.com/watch?v=ONENxWh9RHY) - NGRX/Effects - Display snack bar material UI Notifications | Dispatch multiple actions from effects
-- [Ng Serve](https://ngserve.io/ngrx-tutorial-handling-user-notifications-with/) - ngrx tutorial handling user notifications
 - [Medium](https://thomasburlesonia.medium.com/push-based-architectures-with-rxjs-81b327d7c32d) - push based architectures with rxjs
 - [Offering Solutions](https://offering.solutions/blog/articles/2023/07/15/migrating-angular-to-ngrx-functional-apis-and-effects/) - migrating angular to ngrx functional apis and effects
 - [Medium](https://medium.com/mobiroller-tech/how-to-show-a-success-or-failure-message-after-an-action-dispatched-in-ngrx-6091687d3332) - how to show a success or failure message after an action dispatched in ngrx

@@ -36,7 +36,7 @@ export const appConfig: ApplicationConfig = {
     provideEffects([TeacherEffects, StudentEffects, AppEffects, SchoolEffects]),
     provideRouter(ROUTES),
     {
-      provide: APP_INITIALIZER,
+      provide: APP_INITIALIZER, // earliest action
       multi: true,
       useFactory: () => {
         const service = inject(FakeBackendService);
@@ -51,6 +51,23 @@ export const appConfig: ApplicationConfig = {
         return () => service.init();
       },
     },
-    provideAnimations()
+    provideAnimations() // for Angular Material
   ],
 };
+
+// you can dispatch actions inside the providers array.
+// https://ngserve.io/ngrx-tutorial-handling-user-notifications-with/
+
+/*
+  {
+    provide: APP_INITIALIZER,
+    multi: true,
+    deps: [ Store ],
+    useFactory: (store: Store<any>) => {
+      return () => new Promise(resolve => {
+        store.dispatch(new NotificationActions.WatchNotificationsAction());
+        resolve();
+      });
+    }
+  }
+*/
