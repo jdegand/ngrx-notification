@@ -40,7 +40,7 @@ export class SchoolStore
         this.httpService.getAllSchools().pipe(
           tapResponse(
             (schools) => this.patchState({ schools }),
-            (_) => _
+            (_) => _ // not handling the error
           )
         )
       )
