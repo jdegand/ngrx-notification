@@ -1,6 +1,6 @@
 # NgRx Notification
 
-[Angular Challenges](https://github.com/tomalaforge/angular-challenges) #7 NgRx Notification
+[Angular Challenges](https://angular-challenges.vercel.app/challenges/ngrx/7-power-effect) #7 NgRx Notification
 
 Right now, I have added a snackbar alert for each `add` action.  Alerts are shown regardless of route.
 
@@ -31,14 +31,23 @@ load your effect only when necessary. the application contain a root route, a la
 
 ## Thoughts
 
-- There are continually new students, teachers, and schools added.  
+- There are continually new students, teachers, and schools added. 
 - You need to implement a notification when an add / update event happens.
-- Angular Material snackbar ?
+- I used an Angular Material snackbar to display the notification messages.
+- [ngx-toastr](https://www.npmjs.com/package/ngx-toastr) is also a good choice to implement the same thing.  Toastr makes it slightly easier to distinctly style your notifications.  
 - `{dispatch: false}` is necessary for effects that don't dispatch an action.
 - `providedIn: root` helps with lazy loading.
 - `@ngrx/router-store` -> a help for lazy loading ?
 - Need to investigate ` USER_PROVIDED_EFFECTS`.
-- The SchoolStore is a `ComponentStore`.  Component stores have no actions so you can't listen for an action like the other stores.  
+- The SchoolStore is a `ComponentStore`.  Component stores have no actions so you can't listen for an action like the other stores. 
+- You can inject the global store into the `ComponentStore` component and dispatch actions using the injected store.   
+- "Moving state up" can help when a component is unreachable. 
+- effects vs services -> In NgRx, effects essentially replace services.  This leads me to believe the correct way to implement this would be to eliminate the notification service.  You could also eliminate the http service, but this might bloat your effect and make it harder to read and understand.  Effects should have single responsibility.   
+- There are a lot of intermediate actions / services in this app.
+- "boiler" effects -> Don't have an effect that listens for an action just for that action to call another effect.
+- `create one ngrx effect, or component store effect for each push type, and implement your logic` -  so you can create mutliple effects for each type or create one effect and listen to multiple actions.  
+- You don't want to perform multiple side effects inside a single effect.  You could basically recreate the if/else notification service just using an effect.  
+- For this app's basic snackbar implementation, there is one action type that all the different components dispatch.  There are metadata strategies in NgRx where a single action is dispatched with extra data that can be checked inside the effect to determine the origin of the action.
 
 ## Useful Resources
 
@@ -73,3 +82,10 @@ load your effect only when necessary. the application contain a root route, a la
 - [Blog](https://timdeschryver.dev/blog/you-should-take-advantage-of-the-improved-ngrx-apis#reducers) - you should take advantage of the improved ngrx apis
 - [Github](https://github.com/ngrx/platform/issues/2920) - Listen router events using ComponentStore 
 - [Angular Schule](https://angular-schule.github.io/website-articles/blog/2018-06-5-useful-effects-without-actions/README.html) - 5 useful effects without actions
+- [Github](https://github.com/ngrx/platform/blob/v5.2.0/docs/store/api.md#feature-module-state-composition) - feature module state composition
+- [Stack Overflow](https://stackoverflow.com/questions/49409381/multiple-stores-in-ngrx) - multiple stores in ngrx
+- [Dev.to](https://dev.to/this-is-angular/manipulating-ngrx-effects-400d) - manipulating ngrx effects
+- [Initgrep](https://www.initgrep.com/posts/javascript/angular/handle-side-effects-in-angular-ngrx) - handle side effects in ngrx
+- [Capital One](https://www.capitalone.com/tech/software-engineering/comparison-of-ngrx-and-observable-services/) - ngrx vs services
+- [YouTube](https://www.youtube.com/watch?v=6Obkrru_St8) - NgRx Effects - Avoiding Common Pitfalls
+- [YouTube](https://www.youtube.com/watch?v=nuEfbgzh5_M) - NgRx industry best practices with Tomas Trajan
