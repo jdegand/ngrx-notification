@@ -92,7 +92,7 @@ export class FakeBackendService {
                 concatLatestFrom(() => this.fakeDbService.randomSchool$),
                 map(([, school]) => ({
                     ...school,
-                    name: randCompanyName(), // randSchool() ?
+                    name: randCompanyName(), // falso doesn't have a school data type 
                     version: school.version + 1,
                 })),
                 tap((school) => this.pushService.pushData(school)),

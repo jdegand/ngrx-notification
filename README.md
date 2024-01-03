@@ -71,3 +71,5 @@ load your effect only when necessary. the application contain a root route, a la
 - [Medium](https://medium.com/@thomas.laforge/ngrx-effect-use-to-cache-get-request-d32e9063ba1e) - ngrx effect use to cache get request
 - [YouTube](https://www.youtube.com/watch?v=VZsjN51fqlI) - Angular NgRx Tutorial | Episode 3 | Lazy loading the store state for a feature module
 - [Blog](https://timdeschryver.dev/blog/you-should-take-advantage-of-the-improved-ngrx-apis#reducers) - you should take advantage of the improved ngrx apis
+- [Github](https://github.com/ngrx/platform/issues/2920) - Listen router events using ComponentStore 
+- [Angular Schule](https://angular-schule.github.io/website-articles/blog/2018-06-5-useful-effects-without-actions/README.html) - 5 useful effects without actions

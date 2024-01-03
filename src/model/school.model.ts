@@ -7,10 +7,10 @@ export interface School extends Push {
   version: number;
 }
 
-const schoolTeacher = incrementalNumber();
+const factoryTeacher = incrementalNumber();
 
 export const randSchool = (): School => ({
-  id: schoolTeacher(),
+  id: factoryTeacher(),
   name: randCompanyName(),
   version: 0,
   type: 'school',
