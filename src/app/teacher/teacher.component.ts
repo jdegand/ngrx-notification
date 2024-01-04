@@ -89,9 +89,9 @@ export class TeacherComponent implements OnInit {
 
   constructor(private store: Store, private pushService: PushService) {}
 
-
   // when you switch to new route 
-  // you still will see teacher notification
+  // you will still see teacher notifications
+
   ngOnInit() {
     this.pushService.notification$
     .pipe(filter(Boolean))
@@ -104,6 +104,5 @@ export class TeacherComponent implements OnInit {
         }
       })
   }
-
 }
 */

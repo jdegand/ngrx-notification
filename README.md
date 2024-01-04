@@ -44,6 +44,7 @@ load your effect only when necessary. the application contain a root route, a la
 - "Moving state up" can help when a component is unreachable. 
 - effects vs services -> In NgRx, effects essentially replace services.  This leads me to believe the correct way to implement this would be to eliminate the notification service.  You could also eliminate the http service, but this might bloat your effect and make it harder to read and understand.  Effects should have single responsibility.   
 - There are a lot of intermediate actions / services in this app.
+- The backend seems like it could be consolidated.  But from the directions, it seems like the backend doesn't need to be touched.  
 - "boiler" effects -> Don't have an effect that listens for an action just for that action to call another effect.
 - `create one ngrx effect, or component store effect for each push type, and implement your logic` -  so you can create mutliple effects for each type or create one effect and listen to multiple actions.  
 - You don't want to perform multiple side effects inside a single effect.  You could basically recreate the if/else notification service just using an effect.  
@@ -89,3 +90,4 @@ load your effect only when necessary. the application contain a root route, a la
 - [Capital One](https://www.capitalone.com/tech/software-engineering/comparison-of-ngrx-and-observable-services/) - ngrx vs services
 - [YouTube](https://www.youtube.com/watch?v=6Obkrru_St8) - NgRx Effects - Avoiding Common Pitfalls
 - [YouTube](https://www.youtube.com/watch?v=nuEfbgzh5_M) - NgRx industry best practices with Tomas Trajan
+- [Stack Overflow](https://stackoverflow.com/questions/50105422/use-ngrx-effect-to-call-a-service-when-an-action-occurs) - ngrx effect to call a service when an action occurs (outdated)

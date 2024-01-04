@@ -33,7 +33,7 @@ export class NotificationService {
         },
     },
 
-  // Basic solution ->
+  // Basic solution to add notifications for the existing app
   // create a global effect for a notification 
   // create effects in the individual effects files
   // When the addOne action takes place, call the notification effect
