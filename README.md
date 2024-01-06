@@ -50,7 +50,7 @@ load your effect only when necessary. the application contain a root route, a la
 - `create one ngrx effect, or component store effect for each push type, and implement your logic` -  so you can create mutliple effects for each type or create one effect and listen to multiple actions.  
 - You don't want to perform multiple side effects inside a single effect.  You could basically recreate the if/else notification service just using an effect.  
 - For this app's basic snackbar implementation, there is one action type that all the different components dispatch.  There are metadata strategies in NgRx where a single action is dispatched with extra data that can be checked inside the effect to determine the origin of the action.
-- Refactoring to use `createFeature` has limited benefit.  The app uses entity adapters to handle each collection.  You could better co-locate the code in a one file (reducer), but I don't see much benefit for such a change.  
+- Refactoring to use `createFeature` has limited benefit.  The app uses entity adapters to handle each collection.  You could better co-locate the code in a one file (reducer), but I don't see much benefit for such a change. 
 
 ## Useful Resources
 
@@ -93,3 +93,5 @@ load your effect only when necessary. the application contain a root route, a la
 - [YouTube](https://www.youtube.com/watch?v=6Obkrru_St8) - NgRx Effects - Avoiding Common Pitfalls
 - [YouTube](https://www.youtube.com/watch?v=nuEfbgzh5_M) - NgRx industry best practices with Tomas Trajan
 - [Stack Overflow](https://stackoverflow.com/questions/50105422/use-ngrx-effect-to-call-a-service-when-an-action-occurs) - ngrx effect to call a service when an action occurs (outdated)
+- [Dev.to](https://dev.to/gitsobek/ngrx-listening-for-actions-5c1b) - ngrx listening for actions
+- [Angular In Depth](https://angularindepth.com/posts/1206/understanding-the-magic-behind-ngrx-effects) - understanding the magic behind ngrx effects
