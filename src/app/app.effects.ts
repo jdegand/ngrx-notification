@@ -11,7 +11,7 @@ export class AppEffects {
 
     }
 
-    _showAlert = createEffect(() =>
+    showAlert = createEffect(() =>
         this.action$.pipe(
             ofType(appActions.showAlert),
             exhaustMap(action => {
@@ -26,9 +26,9 @@ export class AppEffects {
         )
     );
 
-    snackbarAlert(message: string, component: string) {
-        // the _class is only evaluated once
-        let _class = component === 'student' ? 'green-snackbar' : 'red-snackbar';
+    snackbarAlert(message: string, component: string = 'Student') {
+        // the class ternary wasn't working because components were title-cased
+        let _class = component == 'Student' ? 'green-snackbar' : component === 'Teacher' ? 'red-snackbar' : 'orange-snackbar';
         return this._snackbar.open(message, 'DISMISS', {
             verticalPosition: 'top',
             horizontalPosition: 'end',
