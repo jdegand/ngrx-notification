@@ -37,18 +37,20 @@ load your effect only when necessary. the application contain a root route, a la
 - [ngx-toastr](https://www.npmjs.com/package/ngx-toastr) is also a good choice to implement the same thing.  Toastr makes it slightly easier to distinctly style your notifications.  
 - `{dispatch: false}` is necessary for effects that don't dispatch an action.
 - `providedIn: root` helps with lazy loading.
-- `@ngrx/router-store` -> a help for lazy loading ?
+- `@ngrx/router-store` -> a help for lazy loading ?  I don't think so.  Router store replaces the need for activated route.  This app doesn't do anything with the url.  
+- Routes can take a providers array.  
 - Need to investigate ` USER_PROVIDED_EFFECTS`.
 - The SchoolStore is a `ComponentStore`.  Component stores have no actions so you can't listen for an action like the other stores. 
 - You can inject the global store into the `ComponentStore` component and dispatch actions using the injected store.   
 - "Moving state up" can help when a component is unreachable. 
-- effects vs services -> In NgRx, effects essentially replace services.  This leads me to believe the correct way to implement this would be to eliminate the notification service.  You could also eliminate the http service, but this might bloat your effect and make it harder to read and understand.  Effects should have single responsibility.   
+- effects vs services -> In NgRx, effects essentially replace services (technically, effects are services themselves, as effects use `Injectable`).  This leads me to believe the correct way to implement this would be to eliminate the notification service.  You could also eliminate the http service, but this might bloat your effect and make it harder to read and understand.  Effects should have single responsibility.   
 - There are a lot of intermediate actions / services in this app.
 - The backend seems like it could be consolidated.  But from the directions, it seems like the backend doesn't need to be touched.  
 - "boiler" effects -> Don't have an effect that listens for an action just for that action to call another effect.
 - `create one ngrx effect, or component store effect for each push type, and implement your logic` -  so you can create mutliple effects for each type or create one effect and listen to multiple actions.  
 - You don't want to perform multiple side effects inside a single effect.  You could basically recreate the if/else notification service just using an effect.  
 - For this app's basic snackbar implementation, there is one action type that all the different components dispatch.  There are metadata strategies in NgRx where a single action is dispatched with extra data that can be checked inside the effect to determine the origin of the action.
+- The reducer files can be refactored to use `createFeature`.
 
 ## Useful Resources
 
