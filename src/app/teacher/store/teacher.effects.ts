@@ -24,7 +24,7 @@ export class TeacherEffects {
   addTeacher$ = createEffect(() =>
     this.actions$.pipe(
       ofType(teacherActions.addOneTeacher),
-      map(action =>
+      map(() =>
         appActions.showAlert({
           message: "Add 1 Teacher",
           component: "Teacher"

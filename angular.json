@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies":[
+            "allowedCommonJsDependencies": [
               "seedrandom"
             ],
             "outputPath": "dist/ngrx-notification",
@@ -96,8 +96,22 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

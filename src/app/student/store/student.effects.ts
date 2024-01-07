@@ -26,7 +26,7 @@ export class StudentEffects {
   addStudent$ = createEffect(() =>
     this.actions$.pipe(
       ofType(studentActions.addOneStudent),
-      map(action =>
+      map(() =>
         appActions.showAlert({
           message: "Add 1 Student",
           component: "Student"

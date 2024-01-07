@@ -24,7 +24,7 @@ export class SchoolEffects {
   addSchool$ = createEffect(() =>
   this.actions$.pipe(
     ofType(schoolActions.addOneSchool),
-    map(action =>
+    map(() =>
       appActions.showAlert({
         message: "Add 1 School",
         component: "School"
