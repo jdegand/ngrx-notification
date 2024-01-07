@@ -10,8 +10,8 @@ export class SchoolEffects {
   private actions$ = inject(Actions);
   private httpService = inject(HttpService);
 
-  loadSchools$ = createEffect(() =>
-    this.actions$.pipe(
+  loadSchools$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(appActions.initApp),
       switchMap(() =>
         this.httpService
@@ -19,19 +19,19 @@ export class SchoolEffects {
           .pipe(map((schools) => schoolActions.addAllSchools({ schools })))
       )
     )
-  );
+  });
 
-  addSchool$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(schoolActions.addOneSchool),
-    map(() =>
-      appActions.showAlert({
-        message: "Add 1 School",
-        component: "School"
-      })
+  addSchool$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(schoolActions.addOneSchool),
+      map(() =>
+        appActions.showAlert({
+          message: "Add 1 School",
+          component: "School"
+        })
+      )
     )
-  )
-);
+  });
 
 
 }

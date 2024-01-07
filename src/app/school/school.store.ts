@@ -24,12 +24,12 @@ export class SchoolStore
   }
 
   // change the updater function to an effect and update the state inside the effect
-  addSchool = this.updater((state, school: School) => ({
+  addSchool = this.updater((state, school: School): { schools: School[] } => ({
     ...state,
     schools: [...state.schools, school],
   }));
 
-  updateSchool = this.updater((state, school: School) => ({
+  updateSchool = this.updater((state, school: School): { schools: School[] } => ({
     ...state,
     schools: state.schools.map((t) => (t.id === school.id ? school : t)),
   }));

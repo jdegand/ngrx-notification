@@ -51,6 +51,7 @@ load your effect only when necessary. the application contain a root route, a la
 - You don't want to perform multiple side effects inside a single effect.  You could basically recreate the if/else notification service just using an effect.  
 - For this app's basic snackbar implementation, there is one action type that all the different components dispatch.  There are metadata strategies in NgRx where a single action is dispatched with extra data that can be checked inside the effect to determine the origin of the action.
 - Refactoring to use `createFeature` has limited benefit.  The app uses entity adapters to handle each collection.  You could better co-locate the code in a one file (reducer), but I don't see much benefit for such a change. 
+- `@ngrx/eslint-plugin` doesn't correctly install as a dev dependency when you use the `ng add @ngrx/eslint-plugin` command.
 
 ## Useful Resources
 
@@ -95,3 +96,4 @@ load your effect only when necessary. the application contain a root route, a la
 - [Stack Overflow](https://stackoverflow.com/questions/50105422/use-ngrx-effect-to-call-a-service-when-an-action-occurs) - ngrx effect to call a service when an action occurs (outdated)
 - [Dev.to](https://dev.to/gitsobek/ngrx-listening-for-actions-5c1b) - ngrx listening for actions
 - [Angular In Depth](https://angularindepth.com/posts/1206/understanding-the-magic-behind-ngrx-effects) - understanding the magic behind ngrx effects
+- [Angular Snippets](https://angularsnippets.dev/snippets/component-store-with-global-state/) - component store with global state

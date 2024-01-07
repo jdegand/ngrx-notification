@@ -10,8 +10,8 @@ export class TeacherEffects {
   private actions$ = inject(Actions);
   private httpService = inject(HttpService);
 
-  loadTeachers$ = createEffect(() =>
-    this.actions$.pipe(
+  loadTeachers$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(appActions.initApp),
       switchMap(() =>
         this.httpService
@@ -19,10 +19,10 @@ export class TeacherEffects {
           .pipe(map((teachers) => teacherActions.addAllTeachers({ teachers })))
       )
     )
-  );
+  });
 
-  addTeacher$ = createEffect(() =>
-    this.actions$.pipe(
+  addTeacher$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(teacherActions.addOneTeacher),
       map(() =>
         appActions.showAlert({
@@ -31,6 +31,6 @@ export class TeacherEffects {
         })
       )
     )
-  );
+  });
 
 }

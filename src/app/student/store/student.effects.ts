@@ -10,8 +10,8 @@ export class StudentEffects {
   private actions$ = inject(Actions);
   private httpService = inject(HttpService);
 
-  loadStudents$ = createEffect(() =>
-    this.actions$.pipe(
+  loadStudents$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(appActions.initApp),
       switchMap(() =>
         this.httpService
@@ -21,10 +21,10 @@ export class StudentEffects {
           ))
       )
     )
-  );
+  });
 
-  addStudent$ = createEffect(() =>
-    this.actions$.pipe(
+  addStudent$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(studentActions.addOneStudent),
       map(() =>
         appActions.showAlert({
@@ -33,6 +33,6 @@ export class StudentEffects {
         })
       )
     )
-  );
+  });
 
 }

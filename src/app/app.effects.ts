@@ -11,8 +11,8 @@ export class AppEffects {
 
     }
 
-    showAlert = createEffect(() =>
-        this.action$.pipe(
+    showAlert = createEffect(() => {
+        return this.action$.pipe(
             ofType(appActions.showAlert),
             exhaustMap(action => {
                 return this.snackbarAlert(action.message, action.component)
@@ -24,7 +24,7 @@ export class AppEffects {
                     )
             })
         )
-    );
+    });
 
     snackbarAlert(message: string, component: string = 'Student') {
         // the class ternary wasn't working because components were title-cased
