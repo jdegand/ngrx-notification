@@ -16,14 +16,10 @@ export class SchoolStore
   implements OnStoreInit {
   readonly schools$ = this.select((state) => state.schools);
 
-  //private readonly effectOnSchools = this.effect(_ => this.schools$.pipe(tap(school => this.store.dispatch(appActions.showAlert({message: 'Schools added', component: 'School'})))));
-
-  // can inject store to dispatch an action
   constructor(private httpService: HttpService) {
     super({ schools: [] });
   }
 
-  // change the updater function to an effect and update the state inside the effect
   addSchool = this.updater((state, school: School): { schools: School[] } => ({
     ...state,
     schools: [...state.schools, school],
@@ -52,8 +48,10 @@ export class SchoolStore
   }
 
   /*
-  callEffect(){
-    this.store.dispatch(appActions.showAlert({message: 'Loaded schools', component: 'School'}))
+  // use inject for the injection token
+
+  ngrxOnStateInit(){
+    // use the injection token here and subscribe to notification$
   }
   */
 

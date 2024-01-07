@@ -51,7 +51,9 @@ load your effect only when necessary. the application contain a root route, a la
 - You don't want to perform multiple side effects inside a single effect.  You could basically recreate the if/else notification service just using an effect.  
 - For this app's basic snackbar implementation, there is one action type that all the different components dispatch.  There are metadata strategies in NgRx where a single action is dispatched with extra data that can be checked inside the effect to determine the origin of the action.
 - Refactoring to use `createFeature` has limited benefit.  The app uses entity adapters to handle each collection.  You could better co-locate the code in a one file (reducer), but I don't see much benefit for such a change. 
-- `@ngrx/eslint-plugin` doesn't correctly install as a dev dependency when you use the `ng add @ngrx/eslint-plugin` command.
+- `@ngrx/eslint-plugin` doesn't install correctly as a dev dependency when you use the `ng add @ngrx/eslint-plugin` command.
+- An injection token approach doesn't seem to be a very NgRx way of adding a notification service.  The Component Store component is a huge arbitrary monkeywrench. The school component store is not really dealing with a distinct local state.  A selector could very easily provide its template with data.  
+- If I add an injection token, I would want to try and use a factory to pass the data type to the token.  I don't know if you could eliminate the `isTeacher` (etc) checks.  Use a filter in the effect?
 
 ## Useful Resources
 
@@ -97,3 +99,8 @@ load your effect only when necessary. the application contain a root route, a la
 - [Dev.to](https://dev.to/gitsobek/ngrx-listening-for-actions-5c1b) - ngrx listening for actions
 - [Angular In Depth](https://angularindepth.com/posts/1206/understanding-the-magic-behind-ngrx-effects) - understanding the magic behind ngrx effects
 - [Angular Snippets](https://angularsnippets.dev/snippets/component-store-with-global-state/) - component store with global state
+- [Github](https://github.com/angular-eslint/angular-eslint) - Angular eslint
+- [Blog](https://timdeschryver.dev/blog/an-experiment-using-the-global-ngrx-store-as-a-local-store#effects) - an experiment using the global ngrx store as a local store
+- [Stack Overflow](https://stackoverflow.com/questions/68355747/having-different-providers-for-the-same-injectiontoken-at-the-route-level) - having different provider for the same injection token
+- [Angular Docs](https://angular.io/api/core/InjectionToken) - Injection Token
+- [Stack Overflow](https://stackoverflow.com/questions/46755241/how-to-update-dependency-injection-token-value) - how to update dependency injection token value
