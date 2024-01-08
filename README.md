@@ -116,3 +116,6 @@ load your effect only when necessary. the application contain a root route, a la
 - [Github](https://github.com/ngrx/platform/pull/2231) - feat(effects): add user provided effects to EffectsModule.forFeature #2231
 - [YouTube](https://www.youtube.com/watch?v=9FH3yhfdXe4&list=PL1BztTYDF-QNlGo5-g65Xj1mINHYk_FM9&index=63) - #63 Hierarchical Dependency Injection | Services & Dependency Injection | A Complete Angular Course
 - [Blog](https://blog.bitsrc.io/6-ways-to-unsubscribe-from-observables-in-angular-ab912819a78f) - 6 ways to unsubscribe from observables
+- [Medium](https://medium.com/ngconf/configure-your-angular-apps-with-an-injection-token-be16eee59c40) - configure your angular apps with an injection token
+- [Blog](https://nartc.me/blog/injection-token-service/) - injection token service
+- [Net Basal](https://netbasal.com/the-hidden-power-of-injectiontoken-factory-functions-in-angular-d42d5575859b) - the hidden power of injection token factory functions in angular

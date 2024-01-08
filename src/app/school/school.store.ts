@@ -51,8 +51,28 @@ export class SchoolStore
   // use inject for the injection token
 
   ngrxOnStateInit(){
-    // use the injection token here and subscribe to notification$
+    // use the injection token here -> read the notification stream and call addSchool when isSchool ?
+    this.addSchool();
   }
+
+  private readonly addSchool = this.effect<void>(
+    pipe(
+      switchMap(() =>
+        notification$.pipe(
+          tapResponse(
+            (data) => {
+              if(isSchool(data)){
+                this.addSchool(data),
+              }
+            },
+            (_) => _ // not handling the error
+          )
+        )
+      )
+    )
+  );
+
+
   */
 
 }
