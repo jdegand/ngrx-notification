@@ -15,24 +15,18 @@ import {
   studentReducer,
   studentsFeatureKey,
 } from './student/store/student.reducer';
-import {
-  schoolReducer,
-  schoolsFeatureKey,
-} from './school/store/school.reducer';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppEffects } from './app.effects';
-import { SchoolEffects } from './school/store/school.effects';
 
 const REDUCERS = {
   [teachersFeatureKey]: teacherReducer,
   [studentsFeatureKey]: studentReducer,
-  [schoolsFeatureKey]: schoolReducer
 };
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideStore(REDUCERS),
-    provideEffects([TeacherEffects, StudentEffects, AppEffects, SchoolEffects]),
+    provideEffects([TeacherEffects, StudentEffects, AppEffects]),
     provideRouter(ROUTES),
     {
       provide: APP_INITIALIZER,
