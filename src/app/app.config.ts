@@ -46,7 +46,7 @@ export const appConfig: ApplicationConfig = {
   ],
 };
 
-// the same notification service is shared by all components 
+// the same notification service was shared by all components 
 /*
 {
   provide: APP_INITIALIZER,
@@ -56,19 +56,6 @@ export const appConfig: ApplicationConfig = {
       return () => service.init();
     },
   },
-*/
-
-/*
-
-    {
-        provide: APP_INITIALIZER, // don't want to use APP_INITIALIZER
-        multi: true,
-        useFactory: (name: string) => {
-            const service = inject(PushService);
-            return (name) => service.pushData(name);
-        },
-    },
-
 */
 
 // you can dispatch actions inside the providers array.

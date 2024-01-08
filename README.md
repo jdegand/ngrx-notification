@@ -2,7 +2,7 @@
 
 [Angular Challenges](https://angular-challenges.vercel.app/challenges/ngrx/7-power-effect) #7 NgRx Notification
 
-Right now, I have added a snackbar alert for each `add` action.  Alerts are shown regardless of route.
+Right now, the app has an implementation that works without the use of ngrx effects.
 
 ## Directions
 

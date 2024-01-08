@@ -53,13 +53,12 @@ export class TeacherComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 
 }
 
 /*
-
 // This solution is insufficient to have the component only add & notify users when on the teacher page
 
 // You can prevent the start but once you navigate to a route that route will generate notifications until the app is reset
