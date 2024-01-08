@@ -54,6 +54,7 @@ load your effect only when necessary. the application contain a root route, a la
 - `@ngrx/eslint-plugin` doesn't install correctly as a dev dependency when you use the `ng add @ngrx/eslint-plugin` command.
 - An injection token approach doesn't seem to be a very NgRx way of adding a notification service.  The Component Store component is a huge arbitrary monkeywrench. The school component store is not really dealing with a distinct local state.  A selector could very easily provide its template with data.  
 - If I add an injection token, I would want to try and use a factory to pass the data type to the token.  I don't know if you could eliminate the `isTeacher` (etc) checks.  Use a filter in the effect?
+- Better to just pass push service to each component ?  Then each component gets its own instance of the service.  With the original implementation, the notification service is shared by all components.  
 
 ## Useful Resources
 
@@ -104,3 +105,10 @@ load your effect only when necessary. the application contain a root route, a la
 - [Stack Overflow](https://stackoverflow.com/questions/68355747/having-different-providers-for-the-same-injectiontoken-at-the-route-level) - having different provider for the same injection token
 - [Angular Docs](https://angular.io/api/core/InjectionToken) - Injection Token
 - [Stack Overflow](https://stackoverflow.com/questions/46755241/how-to-update-dependency-injection-token-value) - how to update dependency injection token value
+- [Medium](https://itnext.io/stop-being-scared-of-injectiontokens-ab22f72f0fe9) - stop being scared of injection tokens
+- [Stack Overflow](https://stackoverflow.com/questions/54966953/is-there-anything-like-app-initializer-for-lazy-loaded-modules-in-angular) - is there anything like app initializer for lazy loaded modules in angular
+- [Medium](https://codeburst.io/understanding-resolvers-in-angular-736e9db71267) - understanding resolvers in angular
+- [Stack Overflow](https://stackoverflow.com/questions/75968163/dynamic-angular-service-injection-for-ngrx-effect) - dynamic angular service injection for ngrx effect
+- [Github](https://github.com/ngrx/platform/pull/2231) - feat(effects): add user provided effects to EffectsModule.forFeature #2231
+- [YouTube](https://www.youtube.com/watch?v=9FH3yhfdXe4&list=PL1BztTYDF-QNlGo5-g65Xj1mINHYk_FM9&index=63) - #63 Hierarchical Dependency Injection | Services & Dependency Injection | A Complete Angular Course
+- [Blog](https://blog.bitsrc.io/6-ways-to-unsubscribe-from-observables-in-angular-ab912819a78f) - 6 ways to unsubscribe from observables
