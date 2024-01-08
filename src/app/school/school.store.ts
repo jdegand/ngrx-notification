@@ -1,5 +1,5 @@
-import { School } from '../../model/school.model';
-import { Injectable } from '@angular/core';
+import { School, isSchool } from '../../model/school.model';
+import { Injectable, inject } from '@angular/core';
 import {
   ComponentStore,
   OnStoreInit,
@@ -7,6 +7,7 @@ import {
 } from '@ngrx/component-store';
 import { pipe, switchMap } from 'rxjs';
 import { HttpService } from '../data-access/http.service';
+import { TOKEN } from '../token';
 
 // Component Store has no actions 
 // can't have an effect that listens to an action
@@ -47,32 +48,25 @@ export class SchoolStore
     this.loadSchools();
   }
 
-  /*
-  // use inject for the injection token
+  private notification$ = inject(TOKEN);
 
-  ngrxOnStateInit(){
-    // use the injection token here -> read the notification stream and call addSchool when isSchool ?
-    this.addSchool();
+  ngrxOnStateInit() {
+    this.addSchools();
   }
 
-  private readonly addSchool = this.effect<void>(
+  // this adds schools to the list 
+  // need to the snackbar alert
+  private readonly addSchools = this.effect<void>(
     pipe(
       switchMap(() =>
-        notification$.pipe(
+        this.notification$.pipe(
           tapResponse(
-            (data) => {
-              if(isSchool(data)){
-                this.addSchool(data),
-              }
-            },
+            (data) => { if (data && isSchool(data)) { this.addSchool(data) } },
             (_) => _ // not handling the error
           )
         )
       )
     )
   );
-
-
-  */
 
 }
