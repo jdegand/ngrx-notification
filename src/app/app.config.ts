@@ -35,7 +35,7 @@ export const appConfig: ApplicationConfig = {
     provideEffects([TeacherEffects, StudentEffects, AppEffects, SchoolEffects]),
     provideRouter(ROUTES),
     {
-      provide: APP_INITIALIZER, // earliest action
+      provide: APP_INITIALIZER,
       multi: true,
       useFactory: () => {
         const service = inject(FakeBackendService);
