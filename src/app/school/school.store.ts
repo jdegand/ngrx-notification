@@ -2,22 +2,25 @@ import { School, isSchool } from '../../model/school.model';
 import { Injectable, inject } from '@angular/core';
 import {
   ComponentStore,
+  OnStateInit,
   OnStoreInit,
   tapResponse,
 } from '@ngrx/component-store';
 import { pipe, switchMap } from 'rxjs';
 import { HttpService } from '../data-access/http.service';
 import { TOKEN } from '../token';
+import { Store } from '@ngrx/store';
+import { appActions } from '../app.actions';
 
 // Component Store has no actions 
 // can't have an effect that listens to an action
 @Injectable()
 export class SchoolStore
   extends ComponentStore<{ schools: School[] }>
-  implements OnStoreInit {
+  implements OnStoreInit, OnStateInit {
   readonly schools$ = this.select((state) => state.schools);
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private store: Store) {
     super({ schools: [] });
   }
 
@@ -43,9 +46,9 @@ export class SchoolStore
       )
     )
   );
-
+  
   ngrxOnStoreInit() {
-    this.loadSchools();
+    this.loadSchools(); // the schools list is not empty when you navigate to the route
   }
 
   private notification$ = inject(TOKEN);
@@ -55,13 +58,18 @@ export class SchoolStore
   }
 
   // this adds schools to the list 
-  // need to the snackbar alert
+  // injected the global store to dispatch action for the snackbar alert
   private readonly addSchools = this.effect<void>(
     pipe(
       switchMap(() =>
         this.notification$.pipe(
           tapResponse(
-            (data) => { if (data && isSchool(data)) { this.addSchool(data) } },
+            (data) => {
+              if (data && isSchool(data)) {
+                this.addSchool(data);
+                this.store.dispatch(appActions.showAlert({message: "Add 1 School", component: "School"}));
+              }
+            },
             (_) => _ // not handling the error
           )
         )

@@ -59,6 +59,7 @@ load your effect only when necessary. the application contain a root route, a la
 - An injection token approach doesn't seem to be a very NgRx way of adding a notification service.  The Component Store component is a huge arbitrary monkeywrench. The school component store is not really dealing with a distinct local state.  A selector could very easily provide its template with data.  
 - If I add an injection token, I would want to try and use a factory to pass the data type to the token.  I don't know if you could eliminate the `isTeacher` (etc) checks.  Use a filter in the effect?
 - Better to just pass push service to each component ?  Then each component gets its own instance of the service.  With the original implementation, the notification service is shared by all components.  
+- The Component Store component will start out with `schools`.  Teacher and students lists are empty when you first navigate to those routes. 
 
 ## Useful Resources
 
