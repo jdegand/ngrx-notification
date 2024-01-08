@@ -39,18 +39,22 @@ load your effect only when necessary. the application contain a root route, a la
 - `providedIn: root` helps with lazy loading.
 - `@ngrx/router-store` -> a help for lazy loading ?  I don't think so.  Router store replaces the need for activated route.  This app doesn't do anything with the url.  
 - Routes can take a providers array.  
-- Need to investigate ` USER_PROVIDED_EFFECTS`.
+- Need to investigate `USER_PROVIDED_EFFECTS`.
 - The SchoolStore is a `ComponentStore`.  Component stores have no actions so you can't listen for an action like the other stores. 
 - You can inject the global store into the `ComponentStore` component and dispatch actions using the injected store.   
 - "Moving state up" can help when a component is unreachable. 
-- effects vs services -> In NgRx, effects essentially replace services (technically, effects are services themselves, as effects use `Injectable`).  This leads me to believe the correct way to implement this would be to eliminate the notification service.  You could also eliminate the http service, but this might bloat your effect and make it harder to read and understand.  Effects should have single responsibility.   
+- effects vs services -> In NgRx, effects essentially replace services (technically, effects are services themselves, as effects use `Injectable`).  This leads me to believe the correct way to implement this would be to eliminate the notification service.  
+- You could also eliminate the http service.  You would need inject the http service into each component and then inside an `OnInit`, call the corresponding `getAll` method.  One drawback to this is that `OnInit` would have a lot of code. 
+- Effects should have single responsibility.   
 - There are a lot of intermediate actions / services in this app.
 - The backend seems like it could be consolidated.  But from the directions, it seems like the backend doesn't need to be touched.  
 - "boiler" effects -> Don't have an effect that listens for an action just for that action to call another effect.
 - `create one ngrx effect, or component store effect for each push type, and implement your logic` -  so you can create mutliple effects for each type or create one effect and listen to multiple actions.  
-- You don't want to perform multiple side effects inside a single effect.  You could basically recreate the if/else notification service just using an effect.  
+- Creating one effect that listens to multiple actions is not applicable because the school store is a component store. 
+- You don't want to perform multiple side effects inside a single effect.
 - For this app's basic snackbar implementation, there is one action type that all the different components dispatch.  There are metadata strategies in NgRx where a single action is dispatched with extra data that can be checked inside the effect to determine the origin of the action.
 - Refactoring to use `createFeature` has limited benefit.  The app uses entity adapters to handle each collection.  You could better co-locate the code in a one file (reducer), but I don't see much benefit for such a change. 
+- NgRx Entity can be eliminated. You could have a global state with teacher, student, and school arrays. Much like the `AppState` in the `fake-db` service.
 - `@ngrx/eslint-plugin` doesn't install correctly as a dev dependency when you use the `ng add @ngrx/eslint-plugin` command.
 - An injection token approach doesn't seem to be a very NgRx way of adding a notification service.  The Component Store component is a huge arbitrary monkeywrench. The school component store is not really dealing with a distinct local state.  A selector could very easily provide its template with data.  
 - If I add an injection token, I would want to try and use a factory to pass the data type to the token.  I don't know if you could eliminate the `isTeacher` (etc) checks.  Use a filter in the effect?
