@@ -7,7 +7,6 @@ import { provideRouter } from '@angular/router';
 import { ROUTES } from './routes';
 import { APP_INITIALIZER, inject } from '@angular/core';
 import { FakeBackendService } from '../backend/fake-backend.service';
-import { NotificationService } from './data-access/notification.service';
 import {
   teacherReducer,
   teachersFeatureKey,
@@ -36,24 +35,28 @@ export const appConfig: ApplicationConfig = {
     provideEffects([TeacherEffects, StudentEffects, AppEffects, SchoolEffects]),
     provideRouter(ROUTES),
     {
-      provide: APP_INITIALIZER, // earliest action
+      provide: APP_INITIALIZER,
       multi: true,
       useFactory: () => {
         const service = inject(FakeBackendService);
         return () => service.start();
       },
     },
-    {
-      provide: APP_INITIALIZER,
-      multi: true,
-      useFactory: () => {
-        const service = inject(NotificationService);
-        return () => service.init();
-      },
-    },
     provideAnimations() // for Angular Material
   ],
 };
+
+// the same notification service was shared by all components 
+/*
+{
+  provide: APP_INITIALIZER,
+  multi: true,
+  useFactory: () => {
+      const service = inject(NotificationService);
+      return () => service.init();
+    },
+  },
+*/
 
 // you can dispatch actions inside the providers array.
 // https://ngserve.io/ngrx-tutorial-handling-user-notifications-with/

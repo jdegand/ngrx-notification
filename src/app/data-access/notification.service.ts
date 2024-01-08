@@ -24,6 +24,7 @@ export class NotificationService {
   // app.config.ts 
   starts the notification service
 
+  // this is basically an injection token
     {
         provide: APP_INITIALIZER,
         multi: true,
