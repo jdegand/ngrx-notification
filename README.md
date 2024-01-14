@@ -2,7 +2,7 @@
 
 [Angular Challenges](https://angular-challenges.vercel.app/challenges/ngrx/7-power-effect) #7 NgRx Notification
 
-Right now, the app has an implementation that works without the use of ngrx effects.
+On this branch, the app uses a combination of approaches.  The teacher and student components are part of global state whereas the school component has its own state managed by `ComponentStore`.  I tested out an injection token approach on the school store component.  In my [PR solution](https://github.com/tomalaforge/angular-challenges/pull/480), I converted all components to use the same approach.
 
 ## Directions
 

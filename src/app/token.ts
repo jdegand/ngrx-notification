@@ -9,3 +9,11 @@ export const TOKEN = new InjectionToken<TokenType>('PUSH', {
     return inject(PushService).notification$;
   }
 });
+
+/*
+// this approach saves you from having to do some intermediate steps
+// i.e.
+// less local variables needed
+// don't think you have to worry about unsubscribing
+// should be easy to test
+*/
