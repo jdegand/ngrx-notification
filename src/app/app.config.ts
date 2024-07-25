@@ -1,11 +1,10 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, APP_INITIALIZER, inject } from '@angular/core';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { TeacherEffects } from './teacher/store/teacher.effects';
 import { StudentEffects } from './student/store/student.effects';
 import { provideRouter } from '@angular/router';
 import { ROUTES } from './routes';
-import { APP_INITIALIZER, inject } from '@angular/core';
 import { FakeBackendService } from '../backend/fake-backend.service';
 import {
   teacherReducer,
